@@ -51,7 +51,10 @@ extension MovieListViewController:PresenterToViewProtocol{
     func showMovieList(MovieList: Array<movieModel>) {
       
         self.Movies = MovieList
-       self.trandingTableView.reloadData()
+        DispatchQueue.main.async {
+            self.trandingTableView.reloadData()
+        }
+       
         
     }
     
@@ -68,10 +71,7 @@ extension MovieListViewController : UICollectionViewDataSource,UICollectionViewD
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-
-        
         return Movies.count
-        
      
     }
 
